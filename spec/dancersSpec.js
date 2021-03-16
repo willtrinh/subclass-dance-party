@@ -48,12 +48,47 @@ describe('shakerDancer', function() {
     expect(shakerDancer.$node).to.be.an.instanceof(jQuery);
   });
 
-  it('should have a class that makes it shake on mousehover', function() {
-    expect(shakerDancer.$node).hasClass('shaking').to.equal(true);
+  it('should have a shake function', function() {
+    sinon.spy(shakerDancer.$node, 'toggleClass');
+    shakerDancer.shake();
+    expect(shakerDancer.$node.toggleClass.called).to.be.true;
+  });
+});
+
+describe('dancer', function() {
+
+  var timeBetweenSteps = 100;
+  var dancer;
+
+  beforeEach(function() {
+    dancer = new Dancer(10, 20, timeBetweenSteps);
   });
 
-  it('should have an eject property', function() {
-    expect(shakerDancer.$node).to.have.property('eject');
+  it('should have a jQuery $node object', function() {
+    expect(dancer.$node).to.be.an.instanceof(jQuery);
   });
+
+  it('should have a lineUp function', function() {
+    sinon.spy(dancer.$node, 'toggleClass');
+    dancer.lineUp();
+    expect(dancer.$node.toggleClass.called).to.be.true;
+  });
+  it('should have a spinMe function', function() {
+    sinon.spy(dancer.$node, 'toggleClass');
+    dancer.spinMe();
+    expect(dancer.$node.toggleClass.called).to.be.true;
+  });
+  it('should have a eject function', function() {
+    sinon.spy(dancer.$node, 'fadeOut');
+    dancer.eject();
+    expect(dancer.$node.fadeOut.called).to.be.true;
+  });
+  it('should have a reset function', function() {
+    sinon.spy(dancer.$node, 'hasClass');
+    dancer.reset();
+    expect(dancer.$node.hasClass.called).to.be.true;
+  });
+
+
 });
 
