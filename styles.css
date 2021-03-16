@@ -15,6 +15,7 @@ body, a:link, a:visited, a:active{
   float:right;
 }
 .topbar{
+  display: flex;
   height:32px;
   background-color: #555;
 }
@@ -25,4 +26,36 @@ body, a:link, a:visited, a:active{
   border:10px solid red;
   border-radius:10px;
   position:absolute;
+}
+
+.floss{
+  width: 25%;
+  height: auto;
+  border: none;
+}
+
+.wiggle{
+  width: 25%;
+  height: auto;
+  border: none;
+}
+
+@keyframes rotate {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(359deg);}
+}
+
+.rotating {
+  animation: rotate;
+  animation-duration:10s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes resize {
+  0%, 100% {transform: scale(1,1);}
+  50% {transform: scale(2,2);}
+}
+
+.resizer {
+  animation: resize 5s linear 0s infinite;
 }

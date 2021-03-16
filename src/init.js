@@ -31,5 +31,21 @@ $(document).ready(function() {
     window.dancers.push(dancer);
     $('body').append(dancer.$node);
   });
+
+  // Event Listeners
+  // Line Up
+  $('.lineUpButton').on('click', function(event) {
+    for (var i = 0; i < window.dancers.length; i++) {
+      window.dancers[i].lineUp();
+    }
+  });
+
+  // Mouse Events Handlers
+  $('body').on('mouseover', '.dancer', function(event) {
+    $(this).addClass('resizer');
+  });
+  $('body').on('mouseleave', '.dancer', function(event) {
+    $(this).removeClass('resizer');
+  });
 });
 
