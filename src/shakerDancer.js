@@ -5,3 +5,7 @@ var ShakerDancer = function(top, left, timeBetweenSteps) {
 };
 ShakerDancer.prototype = Object.create(Dancer.prototype);
 ShakerDancer.prototype.constructor = ShakerDancer;
+
+ShakerDancer.prototype.shake = function() {
+  this.$node.toggleClass('shaking');
+};
