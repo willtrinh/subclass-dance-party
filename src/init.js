@@ -21,7 +21,6 @@ $(document).ready(function() {
     var dancerMakerFunction = window[dancerMakerFunctionName];
 
     // make a dancer with a random position
-
     var dancer = new dancerMakerFunction(
       $('body').height() * Math.random(),
       $('body').width() * Math.random(),
@@ -41,13 +40,42 @@ $(document).ready(function() {
   });
 
   // Mouse Events Handlers
-  $('body').on('mouseover', '.dancer', function(event) {
+  // $('body').on('mouseover', '.dancer', function(event) {
+  //   $(this).addClass('resizer');
+  // });
+  // $('body').on('mouseleave', '.dancer', function(event) {
+  //   $(this).removeClass('resizer');
+  // });
+  // Shaker Mouseover
+  $('body').on('mouseover', '.shaker', function(event) {
+    $(this).addClass('shaking');
+  });
+  $('body').on('mouseleave', '.shaker', function(event) {
+    $(this).removeClass('shaking');
+  });
+  // Twerker Mouseover
+  $('body').on('mouseover', '.wiggle', function(event) {
+    $(this).addClass('rotating');
+  });
+  $('body').on('mouseleave', '.wiggle', function(event) {
+    $(this).removeClass('rotating');
+  });
+  // Flosser Mouseover
+  $('body').on('mouseover', '.floss', function(event) {
     $(this).addClass('resizer');
   });
-
-  $('body').on('mouseleave', '.dancer', function(event) {
+  $('body').on('mouseleave', '.floss', function(event) {
     $(this).removeClass('resizer');
   });
+  // Runner Mouseover
+  $('body').on('mouseover', '.runner', function(event) {
+    $(this).fadeOut();
+  });
+  $('body').on('mouseleave', '.runner', function(event) {
+    $(this).fadeIn();
+  });
+
+
   // Spin Me
   $('.spinMeButton').on('click', function(event) {
     for (var i = 0; i < window.dancers.length; i++) {
