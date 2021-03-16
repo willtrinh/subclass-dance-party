@@ -56,7 +56,6 @@ describe('shakerDancer', function() {
 });
 
 describe('dancer', function() {
-
   var timeBetweenSteps = 100;
   var dancer;
 
@@ -73,22 +72,23 @@ describe('dancer', function() {
     dancer.lineUp();
     expect(dancer.$node.toggleClass.called).to.be.true;
   });
+
   it('should have a spinMe function', function() {
     sinon.spy(dancer.$node, 'toggleClass');
     dancer.spinMe();
     expect(dancer.$node.toggleClass.called).to.be.true;
   });
+
   it('should have a eject function', function() {
     sinon.spy(dancer.$node, 'fadeOut');
     dancer.eject();
     expect(dancer.$node.fadeOut.called).to.be.true;
   });
+
   it('should have a reset function', function() {
     sinon.spy(dancer.$node, 'hasClass');
     dancer.reset();
     expect(dancer.$node.hasClass.called).to.be.true;
   });
-
-
 });
 
