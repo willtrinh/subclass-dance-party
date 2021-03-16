@@ -31,21 +31,6 @@ $(document).ready(function() {
     $('body').append(dancer.$node);
   });
 
-  // Event Listeners
-  // Line Up
-  $('.lineUpButton').on('click', function(event) {
-    for (var i = 0; i < window.dancers.length; i++) {
-      window.dancers[i].lineUp();
-    }
-  });
-
-  // Mouse Events Handlers
-  // $('body').on('mouseover', '.dancer', function(event) {
-  //   $(this).addClass('resizer');
-  // });
-  // $('body').on('mouseleave', '.dancer', function(event) {
-  //   $(this).removeClass('resizer');
-  // });
   // Shaker Mouseover
   $('body').on('mouseover', '.shaker', function(event) {
     $(this).addClass('shaking');
@@ -53,6 +38,7 @@ $(document).ready(function() {
   $('body').on('mouseleave', '.shaker', function(event) {
     $(this).removeClass('shaking');
   });
+
   // Twerker Mouseover
   $('body').on('mouseover', '.wiggle', function(event) {
     $(this).addClass('rotating');
@@ -60,6 +46,7 @@ $(document).ready(function() {
   $('body').on('mouseleave', '.wiggle', function(event) {
     $(this).removeClass('rotating');
   });
+
   // Flosser Mouseover
   $('body').on('mouseover', '.floss', function(event) {
     $(this).addClass('resizer');
@@ -67,6 +54,7 @@ $(document).ready(function() {
   $('body').on('mouseleave', '.floss', function(event) {
     $(this).removeClass('resizer');
   });
+
   // Runner Mouseover
   $('body').on('mouseover', '.runner', function(event) {
     $(this).fadeOut();
@@ -75,6 +63,12 @@ $(document).ready(function() {
     $(this).fadeIn();
   });
 
+  // Line Up
+  $('.lineUpButton').on('click', function(event) {
+    for (var i = 0; i < window.dancers.length; i++) {
+      window.dancers[i].lineUp();
+    }
+  });
 
   // Spin Me
   $('.spinMeButton').on('click', function(event) {
@@ -82,11 +76,28 @@ $(document).ready(function() {
       window.dancers[i].spinMe();
     }
   });
+
   // Execute Order 66
   $('.ejectButton').on('click', function(event) {
     for (var i = 0; i < window.dancers.length; i++) {
       window.dancers[i].eject();
     }
   });
+
+  // Pair Dancers Position
+  $('.pairButton').on('click', function(event) {
+    for (var i = 0; i < window.dancers.length - 1; i += 2) {
+      var randomTop = $('body').height() * Math.random();
+      var randomLeft = $('body').width() * Math.random();
+      window.dancers[i].setPosition(randomTop, randomLeft);
+      window.dancers[i + 1].setPosition(randomTop, randomLeft + 50);
+    }
+    // if loner, ejects itself :(
+    if (window.dancers.length % 2 === 1) {
+      var loner = window.dancers[window.dancers.length - 1];
+      loner.eject(loner);
+    }
+  });
+
 });
 
