@@ -5,56 +5,74 @@
 body, html {
   height:100%;
   font-family: amongUsFont;
+  justify-content: center;
 }
 
 body{
   background-image: url(assets/background.jpeg);
   margin: 0px;
-  font-size: 28px;
+  font-size: 30px;
   background-size: cover;
+  overflow: hidden;
 }
 body, a:link, a:visited, a:active{
-  color: lightblue;
+  color: white;
+  text-decoration: none;
 }
-.title, .addDancerButton{
+
+.btn {
+  font-family: amongUsFont;
+  padding: 0;
+  outline: none;
+  border: none;
+  background: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  letter-spacing: .15em;
+}
+.btn:hover {
+  background-color: red;
+  transition-duration: 0.5s;
+
+}
+a {
   padding:5px 12px;
   float:right;
 }
 .topbar{
   display: flex;
-
   justify-content: center;
-  height:32px;
-}
-.title{
+  height:60px;
 }
 .dancer{
-  border:10px solid red;
-  border-radius:10px;
   position:absolute;
 }
-
-.floss{
-  width: 25%;
-  height: auto;
-  border: none;
+img {
+  width: 100px;
 }
 
-.wiggle{
-  width: 25%;
-  height: auto;
-  border: none;
+/* Animations */
+.lineUp{
+  top: 50% !important;
+  transition-duration: 2s;
+}
+.lineRight{
+  left:100% !important;
+  transition-duration: 5s;
+  animation: rotation 5s linear infinite;
 }
 
-@keyframes rotate {
+@keyframes rotation {
   from {transform: rotate(0deg);}
   to {transform: rotate(359deg);}
 }
 
 .rotating {
-  animation: rotate;
-  animation-duration:10s;
-  animation-iteration-count: infinite;
+  animation: rotation 3s linear infinite;
 }
 
 @keyframes resize {
@@ -64,4 +82,34 @@ body, a:link, a:visited, a:active{
 
 .resizer {
  animation: resize 5s linear 0s infinite;
+}
+
+@keyframes titleAnimation {
+  0% {color: white;}
+  25% {color: red;}
+  50% {color: blue;}
+  100% {color: yellow;}
+}
+.title{
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+  font-size: 30px;
+  animation: titleAnimation 4s linear infinite;
+}
+
+/* Typing Effect */
+.typewriter h1 {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation:
+    typing 3.5s steps(40, end)
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
 }

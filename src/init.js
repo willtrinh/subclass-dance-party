@@ -44,8 +44,21 @@ $(document).ready(function() {
   $('body').on('mouseover', '.dancer', function(event) {
     $(this).addClass('resizer');
   });
+
   $('body').on('mouseleave', '.dancer', function(event) {
     $(this).removeClass('resizer');
+  });
+  // Spin Me
+  $('.spinMeButton').on('click', function(event) {
+    for (var i = 0; i < window.dancers.length; i++) {
+      window.dancers[i].spinMe();
+    }
+  });
+  // Execute Order 66
+  $('.ejectButton').on('click', function(event) {
+    for (var i = 0; i < window.dancers.length; i++) {
+      window.dancers[i].eject();
+    }
   });
 });
 
